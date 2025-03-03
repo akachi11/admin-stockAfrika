@@ -1,0 +1,1 @@
+export const baseAPI = 'https://api.stockafrika.com';
