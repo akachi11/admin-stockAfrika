@@ -1,5 +1,4 @@
 import axios from "axios";
-import { returnErrorMessage } from "../../utils/errorManager";
 import { getToken } from "../../services/AuthServices";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -23,7 +22,7 @@ export const saveDraft = async (data: object) => {
   } catch (error) {
     return {
       status: "error",
-      message: returnErrorMessage(error),
+      message: error,
     };
   }
 };
@@ -50,7 +49,7 @@ export const createStock = async (data: object) => {
   } catch (error) {
     return {
       status: "error",
-      message: returnErrorMessage(error),
+      message: error,
     };
   }
 };
