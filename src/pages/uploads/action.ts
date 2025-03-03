@@ -1,7 +1,6 @@
 import axios from "axios";
 import { getToken } from "../../services/AuthServices";
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { baseAPI } from "../../utils/apiUrls";
 
 export const saveDraft = async (data: object) => {
   try {
@@ -11,7 +10,7 @@ export const saveDraft = async (data: object) => {
       throw new Error("Authentication token is missing.");
     }
 
-    const response = await axios.post(`${BASE_URL}/contributor/draft/`, data, {
+    const response = await axios.post(`${baseAPI}/contributor/draft/`, data, {
       headers: {
         Authorization: `Token ${token}`,
         "Content-Type": "multipart/form-data",
@@ -38,7 +37,7 @@ export const createStock = async (data: object) => {
       throw new Error("Authentication token is missing.");
     }
 
-    const response = await axios.post(`${BASE_URL}/contributor/stock/`, data, {
+    const response = await axios.post(`${baseAPI}/contributor/stock/`, data, {
       headers: {
         Authorization: `Token ${token}`,
         "Content-Type": "multipart/form-data",

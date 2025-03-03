@@ -1,10 +1,10 @@
 import axios from "axios";
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { baseAPI } from "../../utils/apiUrls";
 
 export const signUp = async (data: unknown) => {
   try {
     const res = await axios({
-      url: `${BASE_URL}/user/contributor_sign_up/`,
+      url: `${baseAPI}/user/contributor_sign_up/`,
       method: "POST",
       data,
     });
