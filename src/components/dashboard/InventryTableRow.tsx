@@ -1,4 +1,3 @@
-import React from "react";
 import { Stock } from "../../types";
 
 interface InventoryItemProps {
@@ -17,12 +16,11 @@ const InventoryTableRow: React.FC<InventoryItemProps> = ({ stock, setStock }) =>
             alt="Inventory item"
           />
         </div>
-        <div>
-          <p className="font-semibold text-xs leading-[14px]">
+        <div className="w-[150px] h-[40px] overflow-hidden">
+          <p className="font-semibold text-xs leading-[14px] line-clamp-2">
             {stock.description}
           </p>
-
-          <p className="text-gray-600 text-xs">13/03/2023</p>
+          <p className="text-gray-600 text-xs mt-2">13/03/2023</p>
         </div>
       </div>
     </div>

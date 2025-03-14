@@ -246,64 +246,65 @@ export default function Inventory() {
         </div>
       </div>
 
-      {approveModal && <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div className="bg-white p-6 relative rounded-lg shadow-lg mt-4 w-[90%] lg:w-[65%] max-h-[70%] overflow-auto">
-          <div onClick={() => setApproveModal(false)} className="absolute top-4 right-4 cursor-pointer text-black">
-            <FiX size={20} />
-          </div>
-          <div className="flex flex-col lg:flex-row lg:gap-8 lg:items-center">
-            <div className="flex-[2]">
-              <h2 className="text-lg font-semibold mb-1">{activeStock?.description}</h2>
-
-              <p className="text-xs mb-2">#{activeStock?.stock_id}</p>
-
-              <img src={activeStock?.main_file} className="w-full bg-neutral-200 h-[400px] bg-red object-contain" alt="" />
+      {approveModal &&
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 relative rounded-lg shadow-lg mt-4 w-[90%] lg:w-[65%] max-h-[70%] overflow-auto">
+            <div onClick={() => setApproveModal(false)} className="absolute top-4 right-4 cursor-pointer text-black">
+              <FiX size={20} />
             </div>
-            <div className="flex-[1] mt-4 flex flex-col gap-4">
-              <div className="flex gap-8">
+            <div className="flex flex-col lg:flex-row lg:gap-8 lg:items-center">
+              <div className="flex-[2]">
+                <h2 className="text-lg font-semibold mb-1">{activeStock?.description}</h2>
+
+                <p className="text-xs mb-2">#{activeStock?.stock_id}</p>
+
+                <img src={activeStock?.main_file} className="w-full bg-neutral-200 h-[400px] bg-red object-contain" alt="" />
+              </div>
+              <div className="flex-[1] mt-4 flex flex-col gap-4">
+                <div className="flex gap-8">
+                  <div>
+                    <p className="font-semibold text-sm flex items-center gap-1">File Type <FiInfo /></p>
+                    <p className="mt-2 text-xs font-light bg-neutral-100 border-neutral-200 text-center text-neutral-500 border-[1px] rounded-md">{activeStock?.type}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm flex items-center gap-1">Usage Type <FiInfo /></p>
+                    <p className="mt-2 text-xs font-light bg-neutral-100 border-neutral-200 text-center text-neutral-500 border-[1px] rounded-md">Commercial</p>
+                  </div>
+                </div>
+
                 <div>
-                  <p className="font-semibold text-sm flex items-center gap-1">File Type <FiInfo /></p>
-                  <p className="mt-2 text-xs font-light bg-neutral-100 border-neutral-200 text-center text-neutral-500 border-[1px] rounded-md">{activeStock?.type}</p>
+                  <p className="font-semibold text-sm flex items-center gap-1">Keywords <FiInfo /></p>
+
+                  <div className="mt-2 flex gap-2 flex-wrap">
+                    {activeStock?.keywords.map((keyword, i) => (
+                      <p key={i} className="text-xs bg-neutral-100 text-neutral-500 px-2 py-1 rounded-md">{keyword}</p>
+                    ))}
+                  </div>
                 </div>
+
+                <div className="flex items-center gap-2">
+                  <input type="checkbox" disabled checked={activeStock?.matured_content} />
+                  <p className="text-xs text-neutral-500">Mature Content</p>
+                </div>
+
                 <div>
-                  <p className="font-semibold text-sm flex items-center gap-1">Usage Type <FiInfo /></p>
-                  <p className="mt-2 text-xs font-light bg-neutral-100 border-neutral-200 text-center text-neutral-500 border-[1px] rounded-md">Commercial</p>
+                  <p className="font-semibold flex items-center gap-2">Release form <FiInfo /></p>
+
+                  <a className="text-xs text-accent" href={activeStock?.main_file}>Release form</a>
                 </div>
+
+                {activeStock?.approved ?
+                  <div className="mt-4 px-4 py-2 border-green-300 text-xs border-[1px] text-green-300 rounded-3xl w-[150px] text-center m-auto">Approved</div>
+                  :
+                  <div className="flex gap-4">
+                    <button onClick={() => { approveStock(activeStock?.stock_id) }} className="mt-4 px-4 py-2 border-green-600 text-xs border-[1px] text-green-600 rounded-3xl w-[150px]">Approve Stock</button>
+                    <button onClick={() => { setApproveModal(false) }} className="w-[150px] mt-4 px-4 py-2 border-red-600 text-xs border-[1px] text-red-600 rounded-3xl">Reject Stock</button>
+                  </div>
+                }
               </div>
-
-              <div>
-                <p className="font-semibold text-sm flex items-center gap-1">Keywords <FiInfo /></p>
-
-                <div className="mt-2 flex gap-2 flex-wrap">
-                  {activeStock?.keywords.map((keyword, i) => (
-                    <p key={i} className="text-xs bg-neutral-100 text-neutral-500 px-2 py-1 rounded-md">{keyword}</p>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input type="checkbox" disabled checked={activeStock?.matured_content} />
-                <p className="text-xs text-neutral-500">Mature Content</p>
-              </div>
-
-              <div>
-                <p className="font-semibold flex items-center gap-2">Release form <FiInfo /></p>
-
-                <a className="text-xs text-accent" href={activeStock?.main_file}>Release form</a>
-              </div>
-
-              {activeStock?.approved ?
-                <div className="mt-4 px-4 py-2 border-green-300 text-xs border-[1px] text-green-300 rounded-3xl w-[150px] text-center m-auto">Approved</div>
-                :
-                <div className="flex gap-4">
-                  <button onClick={() => { approveStock(activeStock?.stock_id) }} className="mt-4 px-4 py-2 border-green-600 text-xs border-[1px] text-green-600 rounded-3xl w-[150px]">Approve Stock</button>
-                  <button onClick={() => { setApproveModal(false) }} className="w-[150px] mt-4 px-4 py-2 border-red-600 text-xs border-[1px] text-red-600 rounded-3xl">Reject Stock</button>
-                </div>
-              }
             </div>
           </div>
         </div>
-      </div>
       }
 
     </section>
