@@ -125,7 +125,7 @@ export default function Login() {
           </div>
         </Link>
         <p className="hidden lg:block font-inter text-xl leading-[36px] tracking-wide">
-          CONTRIBUTORS
+          ADMIN
         </p>
       </div>
       <div className="flex-1 w-full grid justify-center mt-10 lg:mt-2">
