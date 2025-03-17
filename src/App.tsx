@@ -1,5 +1,4 @@
 import "./App.css";
-import LandingPage from "./pages/landingpage/Index";
 import Login from "./pages/access/Login";
 import SignUp from "./pages/access/SignUp";
 import {
@@ -23,7 +22,7 @@ const router = createBrowserRouter(
     <>
       <Route>
         <Route element={<Public />}>
-          <Route index path="/" element={<LandingPage />} />
+          <Route index path="/" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
