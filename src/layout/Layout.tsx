@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import SideBar from "../components/dashboard/SideBar";
+import DashboardNavbar from "../components/dashboard/DashboardNavbar";
 
 const Layout: React.FC = () => {
   return (
@@ -7,6 +8,7 @@ const Layout: React.FC = () => {
       <div className="flex flex-row h-screen"> {/* h-screen */}
         <SideBar />
         <div className="flex-1 bg-background overflow-hidden">
+          <DashboardNavbar />
           <div className="overflow-y-scroll h-full pb-[40px]">
             <Outlet />
           </div>

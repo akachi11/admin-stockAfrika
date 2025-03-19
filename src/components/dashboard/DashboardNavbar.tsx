@@ -46,11 +46,7 @@ const DashboardNavbar: React.FC = () => {
       <div className="lg:hidden w-[173px] h-[26px] overflow-hidden">
         <img className="w-full h-full object-contain" src={logo} alt="Logo" />
       </div>
-      <p className="hidden lg:block">
-        On this header, insights would be displayed in form of a changing text
-        notification...
-      </p>
-      <div className="flex items-center gap-3 relative">
+      <div className="flex items-center gap-3 ml-auto relative">
         <button className="hidden outline-none rounded-full border border-white lg:flex items-center px-3 py-1 gap-1">
           <GoUpload size={20} />
           <Link to={"/uploads"}>

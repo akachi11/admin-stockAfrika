@@ -40,18 +40,7 @@ export default function Progress() {
         </div>
         <div className="w-full h-[139px] rounded-3xl bg-white text-primary_black overflow-hidden py-9 px-8 shadow">
           <div>
-            <p className="text-lg font-normal leading-[21px] mb-3">
-              Ranking: <span className="font-bold">Alpha</span>
-            </p>
-            <div className="w-full rounded-full h-2.5 bg-[#F2F6FB]">
-              <div
-                className="bg-accent h-2.5 rounded-full"
-                style={{ width: "29%" }}
-              ></div>
-            </div>
-            <p className="text-lg font-normal leading-[21px] mt-3">
-              29% <span className="font-bold">Done</span>
-            </p>
+            <p>Ranking unavailable</p>
           </div>
         </div>
       </div>
