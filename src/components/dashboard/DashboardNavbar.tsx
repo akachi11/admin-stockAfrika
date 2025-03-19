@@ -1,7 +1,6 @@
 import { CiUser } from "react-icons/ci";
 import logo from "../../assets/logo.png";
 import { IoMenu } from "react-icons/io5";
-import { GoUpload } from "react-icons/go";
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
@@ -47,12 +46,6 @@ const DashboardNavbar: React.FC = () => {
         <img className="w-full h-full object-contain" src={logo} alt="Logo" />
       </div>
       <div className="flex items-center gap-3 ml-auto relative">
-        <button className="hidden outline-none rounded-full border border-white lg:flex items-center px-3 py-1 gap-1">
-          <GoUpload size={20} />
-          <Link to={"/uploads"}>
-            <p className="font-medium text-[15px]">Upload</p>
-          </Link>
-        </button>
         <button
           onClick={() => setProfile(!profile)}
           className="outline-none rounded-full border border-white p-1"
